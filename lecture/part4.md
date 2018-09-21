@@ -1,4 +1,4 @@
-#数组
+#数组 [n]int
 定义数组的格式:
 var <varName> [n]<type> ,n > 0
 var arr [10]int
