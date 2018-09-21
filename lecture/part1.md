@@ -24,3 +24,6 @@ go语言中根据大小写来决定该常量，变量，类型，接口，结构
 
 总结
 package -> import -> const -> var -> type -> interface -> function ...
+
+idea go debug 
+增加hosts下localhost对应127.0.0.1
