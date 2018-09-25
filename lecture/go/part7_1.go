@@ -18,7 +18,10 @@ func main()  {
 	println(a.name)
 
 	c := C{"lvcf c"}
+	//method value
 	c.sayHello("你好呀")
+	//method expression
+	(C).sayHello(c,"你好呀")
 	println(c.name)
 
 	var tz TZ
