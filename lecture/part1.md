@@ -1,4 +1,4 @@
-#part1
+#part1 go语言包结构
 1.本地打开go的api文档
 godoc -http=:6060
 
