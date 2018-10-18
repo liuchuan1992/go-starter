@@ -2,9 +2,9 @@ package main
 
 import (
 	"crypto/sha256"
-	"fmt"
 	"strconv"
 	"time"
+	"fmt"
 )
 
 //简易区块链的数据结构
@@ -38,15 +38,32 @@ func NewBlock( data string, preBlockhash []byte ) *Block{
 	return block
 }
 
-func (bc *Blockchain) AddBlock(data string) {
-	prevBlock := bc.blocks[len(bc.blocks)-1]
-	newBlock := NewBlock(data, prevBlock.Hash)
-	bc.blocks = append(bc.blocks, newBlock)
+/**
+往区块链中添加一个区块
+ */
+func(bc * Blockchain) AddBlock(data string){
+	preBlock := bc.blocks[len(bc.blocks) - 1] //获取当前的区块
+	curBlock :=NewBlock(data,preBlock.Hash) //生成新的区块
+	bc.blocks = append(bc.blocks,curBlock)
 }
 
+func NewGenesisBlock() *Block{
+	return NewBlock("lvcf's first block !",[]byte{})
+}
 
+func InitBlockChain() * Blockchain{
+	return &Blockchain{[]*Block{NewGenesisBlock()}}
+}
 func main() {
-	h := sha256.New()
-	fmt.Println(h)
+	blockchain := InitBlockChain()
+	blockchain.AddBlock("lvcf -> Yoga , 1BTC")
+	blockchain.AddBlock("Yoga -> M. ,0.5BTC")
 
+
+	for _, block := range blockchain.blocks {
+		fmt.Printf("Prev. hash: %x \n",block.PrevBlockHash)
+		fmt.Printf("Data: %s \n",block.Data)
+		fmt.Printf("Hash: %x \n",block.Hash)
+		fmt.Println()
+	}
 }
